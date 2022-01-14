@@ -7,7 +7,7 @@
 // @include       https://app.roll20.net/editor*
 // @include       https://app.roll20.net/campaigns/chatarchive*
 // @run-at        document-start
-// @version       2021.01.14.1
+// @version       2021.01.14.2
 // @license       GPL-3.0-or-later
 // Edit background image at line 460
 // Testing update
