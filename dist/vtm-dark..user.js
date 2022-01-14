@@ -3,6 +3,7 @@
 // @namespace     Idk
 // @description	  A dark theme for Roll20.net.
 // @author        RedReign edited by Pharonix, edited by kookie
+// @downloadURL   https://raw.githubusercontent.com/kookiekookie/roll20-vtm-dark-mode/main/vtm-dark.user.js
 // @include       https://app.roll20.net/editor*
 // @include       https://app.roll20.net/campaigns/chatarchive*
 // @run-at        document-start
