@@ -7,7 +7,7 @@
 // @include       https://app.roll20.net/editor*
 // @include       https://app.roll20.net/campaigns/chatarchive*
 // @run-at        document-start
-// @version       2021.01.14.3
+// @version       2021.01.14.4
 // @license       GPL-3.0-or-later
 // ==/UserScript==
 (function() {var css =`
@@ -869,6 +869,10 @@ div.dd-content {
 }
 */
 
+.dd-content {
+    color:#e5e5e5 !important;
+}
+
 div.dd-content:hover {
 	background-color:hsl(0,0%,40%) !important;
 }
@@ -1374,6 +1378,10 @@ position: static !important;
 
 .sheet-rolltemplate-vampirecomp .sheet-roll {
 	background-color:hsl(0,0%,10%)!important;
+}
+
+.sheet-rolltemplate-vampirecomp .sheet-roll__block {
+    background-color:transparent!important
 }
 
 .sheet-rolltemplate-vampirecomp .sheet-roll__character,
