@@ -7,7 +7,7 @@
 // @include       https://app.roll20.net/editor*
 // @include       https://app.roll20.net/campaigns/chatarchive*
 // @run-at        document-start
-// @version       2021.01.14.4
+// @version       2021.01.15
 // @license       GPL-3.0-or-later
 // ==/UserScript==
 (function() {var css =`
@@ -1376,7 +1376,9 @@ position: static !important;
 	background-color:hsl(58,25%,15%)!important;
 }
 
-.sheet-rolltemplate-vampirecomp .sheet-roll {
+.sheet-rolltemplate-vampirecomp .sheet-roll,
+.modal__wrapper
+{
 	background-color:hsl(0,0%,10%)!important;
 }
 
@@ -1391,13 +1393,15 @@ input[type*=hidden][value=on] + .lock strong,
 input[type*=hidden][value="0"] + .lock strong,
 .v5e input[type*=hidden][value="0"] + .whisper strong,
 .v5e .whisper__slider::before,
-.v5e .pc .basic .input__title,
+.v5e .pc .basic .input__title, .v5e .npc .basic .input__title,
 .v5e .skill__title,
 .v5e .skill__control,
 .v5e .attribute__title,
 input[name=attr_sheet_page][value=front] ~ * button.navigation__item[name*=front],
 .v5e .navigation button.navigation__item,
-.v5e .dot--reset .dot__clear
+.v5e .dot--reset .dot__clear,
+.sections__control,
+.v5e .npc .pool__title *, .v5e .npc .pool__input[type=number] *
 {
     color:hsl(0,0%,75%)!important;
 }
@@ -1412,10 +1416,11 @@ input[name=attr_sheet_page][value=front] ~ * button.navigation__item[name*=front
 .v5e .pc .misc-stats .input__title,
 .v5e .discipline__buttontext,
 .v5e .pc h1, .v5e .pc h2, .v5e .pc h3, .v5e .pc h4, .v5e .pc h5,
-.v5e .pc input[type=text],
+.v5e .npc h1, .v5e .npc h2, .v5e .npc h3, .v5e .npc h4, .v5e .npc h5,
+.v5e .pc input[type=text], .v5e .npc input[type=text],
 .discipline input[type=number],
 button.discipline__button--add,
-.v5e .pc textarea,
+.v5e .pc textarea, .v5e .npc textarea,
 .v5e .pc .experience .input input[type=number],
 .v5e .pc .experience .input__title
 {
@@ -1423,12 +1428,14 @@ button.discipline__button--add,
 }
 
 .v5e .discipline-power__display,
-.v5e .pc .logo
+.v5e .pc .logo,
+.v5e .npc .logo
 {
     background-color: transparent!important;
 }
 
-.v5e .pc .logo img {
+.v5e .pc .logo img,
+.v5e .npc .logo img {
     content: url('https://i.imgur.com/BBydLJJ.png')!important;
 }
 
@@ -2364,6 +2371,10 @@ div.sheet-rolltemplate-desc div.sheet-desc.sheet-info .sheet-bottom {
 .r20es-welcome {
     background-color: hsl(0,0%,10%) !important;
     color: hsl(0,0%,75%) !important;
+}
+
+.point__hidden[type=hidden][value=s] + .point {
+    background:linear-gradient(45deg, transparent calc(50% - 2px), #fff 50%, transparent calc(50% + 2px)) !important;
 }
 `;
 if (typeof GM_addStyle != "undefined") {
