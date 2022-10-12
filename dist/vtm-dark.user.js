@@ -7,7 +7,7 @@
 // @include       https://app.roll20.net/editor*
 // @include       https://app.roll20.net/campaigns/chatarchive*
 // @run-at        document-start
-// @version       2021.01.15
+// @version       2021.02
 // @license       GPL-3.0-or-later
 // ==/UserScript==
 (function() {var css =`
@@ -1377,7 +1377,8 @@ position: static !important;
 }
 
 .sheet-rolltemplate-vampirecomp .sheet-roll,
-.modal__wrapper
+.modal__wrapper,
+.sheet-rolltemplate-vampirecomp .sheet-roll, .sheet-rolltemplate-vampire .sheet-roll
 {
 	background-color:hsl(0,0%,10%)!important;
 }
@@ -1401,7 +1402,8 @@ input[name=attr_sheet_page][value=front] ~ * button.navigation__item[name*=front
 .v5e .navigation button.navigation__item,
 .v5e .dot--reset .dot__clear,
 .sections__control,
-.v5e .npc .pool__title *, .v5e .npc .pool__input[type=number] *
+.v5e .npc .pool__title *, .v5e .npc .pool__input[type=number] *,
+.sheet-rolltemplate-vampirecomp .sheet-roll__character, .sheet-rolltemplate-vampire .sheet-roll__character
 {
     color:hsl(0,0%,75%)!important;
 }
@@ -1422,7 +1424,8 @@ input[name=attr_sheet_page][value=front] ~ * button.navigation__item[name*=front
 button.discipline__button--add,
 .v5e .pc textarea, .v5e .npc textarea,
 .v5e .pc .experience .input input[type=number],
-.v5e .pc .experience .input__title
+.v5e .pc .experience .input__title,
+.sheet-rolltemplate-vampirecomp .sheet-roll__title, .sheet-rolltemplate-vampire .sheet-roll__title
 {
     color: hsl(44,63%,63%)!important;
 }
