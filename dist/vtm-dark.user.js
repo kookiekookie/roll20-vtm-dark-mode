@@ -1495,6 +1495,13 @@ input[name=attr_sheet_page][value=front] ~ * button.navigation__item[name*=front
 .v5e {
     background-color: #222222!important;
 }
+#tab-content > form > div.charactersheet.tab-pane.charsheet.lang-undefined > div.v5e.compendium-drop-target.spcs > div.pc > div.front > div.row.justify-content-between.misc-stats > div.resonance.col-md-2 {
+    margin-top: 20px;
+}
+
+.v5e .pc .misc-stats input[type=text].input__interface {
+    min-width: 100px!important;
+}
 
 .dd-item.handout .dd-content .redactor_editor > .name {
 	background-color:hsl(0,0%,20%) !important;
