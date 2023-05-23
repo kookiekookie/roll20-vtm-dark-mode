@@ -7,7 +7,7 @@
 // @include       https://app.roll20.net/editor*
 // @include       https://app.roll20.net/campaigns/chatarchive*
 // @run-at        document-start
-// @version       2022.12
+// @version       2023.06
 // @license       GPL-3.0-or-later
 // ==/UserScript==
 (function() {var css =`
@@ -598,7 +598,7 @@ background-color: #282150 !important;
 }
 
 #rightsidebar {
-	background-color:hsl(0,0%,0%)!important;
+    background-color: hsl(0deg 0% 10%)!important;
 }
 
 #sidebarcontrol {
@@ -1378,10 +1378,12 @@ position: static !important;
 
 .sheet-rolltemplate-vampirecomp .sheet-roll,
 .modal__wrapper,
-.sheet-rolltemplate-vampirecomp .sheet-roll, .sheet-rolltemplate-vampire .sheet-roll
+.sheet-rolltemplate-vampire .sheet-roll,
+.sheet-rolltemplate-vampirechat .sheet-roll
 {
 	background-color:hsl(0,0%,10%)!important;
 }
+
 
 .sheet-rolltemplate-vampirecomp .sheet-roll__block {
     background-color:transparent!important
@@ -1403,7 +1405,8 @@ input[name=attr_sheet_page][value=front] ~ * button.navigation__item[name*=front
 .v5e .dot--reset .dot__clear,
 .sections__control,
 .v5e .npc .pool__title *, .v5e .npc .pool__input[type=number] *,
-.sheet-rolltemplate-vampirecomp .sheet-roll__character, .sheet-rolltemplate-vampire .sheet-roll__character
+.sheet-rolltemplate-vampire .sheet-roll__character,
+.sheet-rolltemplate-vampirechat .sheet-roll__character
 {
     color:hsl(0,0%,75%)!important;
 }
@@ -1425,7 +1428,9 @@ button.discipline__button--add,
 .v5e .pc textarea, .v5e .npc textarea,
 .v5e .pc .experience .input input[type=number],
 .v5e .pc .experience .input__title,
-.sheet-rolltemplate-vampirecomp .sheet-roll__title, .sheet-rolltemplate-vampire .sheet-roll__title
+.sheet-rolltemplate-vampirecomp .sheet-roll__title,
+.sheet-rolltemplate-vampire .sheet-roll__title,
+.sheet-rolltemplate-vampirechat .sheet-roll__title
 {
     color: hsl(44,63%,63%)!important;
 }
@@ -1490,6 +1495,10 @@ input[name=attr_sheet_page][value=front] ~ * button.navigation__item[name*=front
 
 .v5e button.action-roll[type=action]:before {
     background-image: url(https://i.imgur.com/p9sZdDN.png)!important;
+}
+
+.v5e .discipline__roll-type-selector, .v5e .discipline__roll-discipline, .v5e .discipline__groupselect {
+    background-color: #1a1a1a!important;
 }
 
 .v5e {
