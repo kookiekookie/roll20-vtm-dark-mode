@@ -7,7 +7,7 @@
 // @include       https://app.roll20.net/editor*
 // @include       https://app.roll20.net/campaigns/chatarchive*
 // @run-at        document-start
-// @version       2023.06
+// @version       2023.07
 // @license       GPL-3.0-or-later
 // ==/UserScript==
 (function() {var css =`
@@ -16,6 +16,11 @@
     background-color: hsl(0,0%,10%);
     color: hsl(0,0%,80%);
 }
+.sheet-rolltemplate-vampirechat .sheet-roll, .sheet-rolltemplate-vampirechat.sheet-rolltemplate-darkmode .sheet-roll, .sheet-rolltemplate-vampirecomp .sheet-roll, .sheet-rolltemplate-vampirecomp.sheet-rolltemplate-darkmode .sheet-roll, .sheet-rolltemplate-vampire .sheet-roll, .sheet-rolltemplate-vampire.sheet-rolltemplate-darkmode .sheet-roll
+{
+  color: hsl(0,0%,75%)!important;
+}
+
 
 /*
 Piety Box, Hit dice
