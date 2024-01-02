@@ -7,7 +7,7 @@
 // @include       https://app.roll20.net/editor*
 // @include       https://app.roll20.net/campaigns/chatarchive*
 // @run-at        document-start
-// @version       2024.01
+// @version       2024.01.2
 // @license       GPL-3.0-or-later
 // ==/UserScript==
 (function() {var css =`
@@ -1800,8 +1800,30 @@ button[name^='roll_shaped_coinage'] {
     box-shadow:none !important;
 }
 
-.charsheet .sheet-section-settings .sheet-wrap-box {
+.charsheet .sheet-section-settings .sheet-wrap-box,
+.panel-default > .panel-heading,
+.el-input__wrapper
+{
     background-color: #1a1a1a !important;
+}
+
+.panel-group .panel
+{
+  margins: 7px!important;
+}
+
+.panel-collapse,
+.el-select-dropdown__item,
+.el-select-dropdown
+{
+  background-color: #2a2a2a!important;
+}
+
+.el-select-dropdown__item {
+    color: #a6a6a6!important;
+}
+.el-select-dropdown__item:hover {
+    background-color: rgb(24, 24, 24)!important;
 }
 
 .charsheet .sheet-zebra-rows .sheet-shaped-row:nth-child(2n),
