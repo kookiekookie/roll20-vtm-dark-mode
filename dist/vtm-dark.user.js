@@ -7,7 +7,7 @@
 // @include       https://app.roll20.net/editor*
 // @include       https://app.roll20.net/campaigns/chatarchive*
 // @run-at        document-start
-// @version       2023.07
+// @version       2024.01
 // @license       GPL-3.0-or-later
 // ==/UserScript==
 (function() {var css =`
@@ -16,7 +16,14 @@
     background-color: hsl(0,0%,10%);
     color: hsl(0,0%,80%);
 }
-.sheet-rolltemplate-vampirechat .sheet-roll, .sheet-rolltemplate-vampirechat.sheet-rolltemplate-darkmode .sheet-roll, .sheet-rolltemplate-vampirecomp .sheet-roll, .sheet-rolltemplate-vampirecomp.sheet-rolltemplate-darkmode .sheet-roll, .sheet-rolltemplate-vampire .sheet-roll, .sheet-rolltemplate-vampire.sheet-rolltemplate-darkmode .sheet-roll
+.sheet-rolltemplate-vampirechat .sheet-roll,
+.sheet-rolltemplate-vampirechat.sheet-rolltemplate-darkmode .sheet-roll,
+.sheet-rolltemplate-vampirecomp .sheet-roll,
+.sheet-rolltemplate-vampirecomp.sheet-rolltemplate-darkmode .sheet-roll,
+.sheet-rolltemplate-vampire .sheet-roll,
+.sheet-rolltemplate-vampire.sheet-rolltemplate-darkmode .sheet-roll
+.sheet-rolltemplate-vampirepower .sheet-roll,
+.sheet-rolltemplate-vampirepower-darkmode .sheet-roll
 {
   color: hsl(0,0%,75%)!important;
 }
@@ -1384,7 +1391,9 @@ position: static !important;
 .sheet-rolltemplate-vampirecomp .sheet-roll,
 .modal__wrapper,
 .sheet-rolltemplate-vampire .sheet-roll,
-.sheet-rolltemplate-vampirechat .sheet-roll
+.sheet-rolltemplate-vampirechat .sheet-roll,
+.sheet-rolltemplate-vampirepower .sheet-roll,
+.sheet-rolltemplate-vampirepower-darkmode .sheet-roll
 {
 	background-color:hsl(0,0%,10%)!important;
 }
@@ -1394,7 +1403,7 @@ position: static !important;
     background-color:transparent!important
 }
 
-.sheet-rolltemplate-vampirecomp .sheet-roll__character,
+
 .lock input[type=checkbox]:checked ~ * .lock__icon::before,
 input[type*=hidden][value=on] + .lock strong,
 .lock__icon::before,
@@ -1410,8 +1419,8 @@ input[name=attr_sheet_page][value=front] ~ * button.navigation__item[name*=front
 .v5e .dot--reset .dot__clear,
 .sections__control,
 .v5e .npc .pool__title *, .v5e .npc .pool__input[type=number] *,
-.sheet-rolltemplate-vampire .sheet-roll__character,
-.sheet-rolltemplate-vampirechat .sheet-roll__character
+.sheet-roll__character,
+.sheet-rolltemplate-vampirepower .sheet-roll
 {
     color:hsl(0,0%,75%)!important;
 }
@@ -1433,11 +1442,38 @@ button.discipline__button--add,
 .v5e .pc textarea, .v5e .npc textarea,
 .v5e .pc .experience .input input[type=number],
 .v5e .pc .experience .input__title,
-.sheet-rolltemplate-vampirecomp .sheet-roll__title,
-.sheet-rolltemplate-vampire .sheet-roll__title,
-.sheet-rolltemplate-vampirechat .sheet-roll__title
+.sheet-roll__title
 {
     color: hsl(44,63%,63%)!important;
+}
+
+.sheet-roll__dot-span
+{
+  border-color: hsl(44,63%,63%)!important;
+}
+
+.sheet-roll__dot--checked .sheet-roll__dot-span
+{
+  background-color: rgba(102, 0, 0, 0.55)!important;
+}
+
+.sheet-roll__container div
+{
+  font-family: "Libre Baskerville", serif!important;
+  font-weight: normal!important;
+}
+
+.sheet-roll__results,
+.sheet-roll__dicerolled,
+.sheet-roll__text
+{
+  border-top: 2px solid rgba(102, 0, 0, 0.55)!important;
+}
+
+.sheet-roll__block.sheet-roll__dots-container,
+.sheet-roll__text
+{
+  padding-bottom: 10px!important;
 }
 
 .v5e .discipline-power__display,
@@ -1498,7 +1534,8 @@ input[name=attr_sheet_page][value=front] ~ * button.navigation__item[name*=front
     border-color: rgb(204,204,204)!important;
 }
 
-.v5e button.action-roll[type=action]:before {
+.v5e button.action-roll[type=action]:before,
+.v5e .discipline__control input[type=checkbox] {
     background-image: url(https://i.imgur.com/p9sZdDN.png)!important;
 }
 
@@ -2400,6 +2437,12 @@ div.sheet-rolltemplate-desc div.sheet-desc.sheet-info .sheet-bottom {
 .point__hidden[type=hidden][value=s] + .point {
     background:linear-gradient(45deg, transparent calc(50% - 2px), #fff 50%, transparent calc(50% + 2px)) !important;
 }
+
+.v5e .pc textarea, .v5e .npc textarea
+{
+  text-align: justify;
+}
+
 `;
 if (typeof GM_addStyle != "undefined") {
 	GM_addStyle(css);
@@ -2429,12 +2472,47 @@ else {
     }
     setTimeout(waitForDepts, 10);
 }
+
 })();
 (function(){
 const el = document.createElement("link");
 el.rel = "stylesheet";
 el.href = "/css/licensed5ednd.css";
 document.head.appendChild(el)
+})();
+
+
+(function() {
+    'use strict';
+
+    // Function to change the src attribute of the image
+    function changeImageSrc() {
+        // Use a more specific and concise querySelector
+        var elements = document.querySelectorAll('#tab-content form .charactersheet .discipline__control--roll img');
+
+        // Change the src attribute using forEach
+        elements.forEach(function(element) {
+            element.src = 'https://i.imgur.com/p9sZdDN.png';
+        });
+    }
+
+    // Callback function for the mutation observer
+    function mutationCallback(mutationsList, observer) {
+        // Run the script whenever a mutation is detected
+        changeImageSrc();
+    }
+
+    // Create a mutation observer
+    var observer = new MutationObserver(mutationCallback);
+
+    // Configure the observer to watch for changes in the entire document
+    var observerConfig = { childList: true, subtree: true };
+
+    // Start observing the document
+    observer.observe(document.documentElement, observerConfig);
+
+    // Run the script initially
+    changeImageSrc();
 })();
 
 // Edit background image at line 460
